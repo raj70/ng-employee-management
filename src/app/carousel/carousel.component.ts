@@ -8,7 +8,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CarouselComponent implements OnInit {
 
-  images = [1, 2, 3, 4].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+  images = [1, 2, 3, 4].map(() => `${Math.random()}`);
   constructor(config: NgbCarouselConfig) {
     config.interval = 10000;
     config.wrap = false;

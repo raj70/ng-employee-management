@@ -11,6 +11,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuthService } from './auth.service';
     HeaderComponent,
     FooterComponent,
     CarouselComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
