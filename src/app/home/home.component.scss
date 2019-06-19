@@ -1,0 +1,31 @@
+$font-color: #fbc531;
+$font-header-color: #00a8ff;
+
+.home_section {
+  height: 90vh;
+  background-color: $font-header-color;
+}
+
+.home_section_hero {
+  position: absolute;
+  z-index: 1000;
+}
+
+.home_section_text_container {
+  width: 100%;
+  background-image: linear-gradient(rgba(184, 181, 181, 0.541), rgba(255, 255, 255, 0.548));
+}
+
+.home_section_hero_text {
+  margin-top: 65%;
+  border-radius: 5px;
+  padding: 50px;
+
+  h1 {
+    color: $font-header-color;
+  }
+}
+
+.home_hero_text {
+  color: $font-header-color;
+}
