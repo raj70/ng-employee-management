@@ -47,8 +47,17 @@ $menu-color: #004e77;
   color: $menu-color;
 }
 
-.menu-container-sub-items a:link,
-.menu-container-sub-items a:hover,
-.menu-container-sub-items a:visited {
+
+
+a:link,
+a:visited {
+  color: $menu-color;
   text-decoration: none;
+  -webkit-transition: border-bottom 0.2s, color 0.2s;
+  transition: border-bottom 0.2s, color 0.2s;
+}
+
+a:hover,
+a:active {
+  color: #555;
 }
