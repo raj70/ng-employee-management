@@ -1,0 +1,59 @@
+<div class="container">
+  <!-- <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)"> -->
+  <form>
+    <!--Note: for passing value from view to datasource: https://angular.io/guide/template-syntax#binding-syntax-an-overview 
+    for example:  [(ngModel)]="username" name="username"
+  -->
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
+        (ngModelChange)="valueChange($event)" (focusout)="onfocusOut($event)" [(ngModel)]="username" name="username"
+        #validEmail="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+
+      <!-- Note: #validPassword on input element is for the validation: 
+  https://angular.io/guide/form-validation#template-driven-validation 
+  #validPassword: exporting ngModel to local variable validPassword
+  Note: pattern, required attribute are from HTML 5; for more: 
+  https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
+
+  -->
+
+      <div *ngIf="validEmail.invalid && (validEmail.dirty || validEmail.touched)" class="alert alert-danger">
+        <div *ngIf="validEmail.errors.required">
+          Email is required.
+        </div>
+
+        <div *ngIf="validEmail.errors.pattern">
+          Email is not valid.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" (focusout)="onfocusOut($event)"
+        [(ngModel)]="password" name="password" #validPassword="ngModel" minlength="8"
+        pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+
+      <div *ngIf="validPassword.invalid && (validPassword.dirty || validPassword.touched)" class="alert alert-danger">
+        <div *ngIf="validPassword.errors.required">
+          Password is required.
+        </div>
+
+        <div *ngIf="validPassword.errors.pattern">
+          <span>Password is not valid</span>
+          <ul>
+            <li> UpperCase, LowerCase</li>
+            <li> Number/SpecialChar </li>
+            <li> Min 8 Chars </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Remember me</label>
+    </div>
+    <button class="btn btn-primary" (click)="login($event)">Sign In</button>
+  </form>
+
+</div>

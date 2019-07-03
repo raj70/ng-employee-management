@@ -9,13 +9,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarouselComponent } from './carousel/carousel.component';
-import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from './auth.service';
 import { MenuComponent } from './menu/menu.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule }   from '@angular/forms';
 import { EmployeeModule } from './employee/employee.module';
 import { InMemoryDataService } from './in-memory-data.service';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -24,23 +23,30 @@ import { InMemoryDataService } from './in-memory-data.service';
     HeaderComponent,
     FooterComponent,
     CarouselComponent,
-    LoginComponent,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
     /* ng-bootstrap */
     NgbModule.forRoot(),
-    ReactiveFormsModule,
+    FormsModule,
+     /* Employee Module; this module has to be before AppRoutingModule: 
+    https://angular.io/guide/router#add-heroes-functionality */
+    /* https://angular.io/guide/router#module-import-order-mattersb */ 
+    AuthModule,
     EmployeeModule,
     AppRoutingModule,
-    /* ng http */
+    /* ng http : to talk to outside api: https://angular.io/tutorial/toh-pt6 */
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
-  ],
-  providers: [AuthService],
+    )   
+   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+ /* Employee Module; this module has to be before AppRoutingModule: 
+    https://angular.io/guide/router#add-heroes-functionality */
+    /* https://angular.io/guide/router#module-import-order-mattersb */ 
