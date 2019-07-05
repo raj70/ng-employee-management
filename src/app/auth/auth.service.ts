@@ -7,12 +7,14 @@ export class AuthService {
 
   @Output()
   username: string;
+  isLogin: boolean;
 
   constructor() { }
 
   login(username: string, password: string): void {
     this.username = username;
-    console.log(this.username, password);
+    console.log(username, password);
+    this.isLogin = true;
   }
 
   logout(): void {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../auth.service';
+import { Event } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -22,25 +24,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(e): void {
-    e.preventDefault();
-
-    if (this.username === '' || this.password === '') {
-      return;
-    }
-
-    this.authService.login(this.username, this.password);
-  }
-
-  valueChange(e) {
-    console.log(e);
-  }
-
-  onfocusOut(e) {
-    if (e.target.id === `email`) {
-      console.log(e.target.value, this.validation);
-    } else if (e.target.id === `password`) {
-      console.log(e.target.value, this.validation);
+  onSubmit(form: NgForm): void {
+    if (form.valid) {
+      const email = form.controls["username"].value;
+      const password = form.controls["password"].value;
+      this.authService.login(email, password);
+      this.authService.username = email;
     }
   }
 }
