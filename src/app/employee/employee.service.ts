@@ -16,7 +16,10 @@ export class EmployeeService {
     return this.http.get<Employee[]>('api/employees');
   }
 
-  getEmployee() {
+  getEmployee(id: number): Observable<Employee> {
 
+    const employee = this.http.get<Employee>('api/employees/' + id);
+
+    return employee;
   }
 }
