@@ -17,7 +17,6 @@ export class EmployeeService {
   }
 
   getEmployee(id: number): Observable<Employee> {
-    console.log(id);
     const employee = this.http.get<Employee>('api/employees/' + id);
 
     return employee;

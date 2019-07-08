@@ -1,21 +1,26 @@
 <div class="container container_list">
   <div class="row">
     <div class="col col-9">
-      <router-outlet></router-outlet>
+      <router-outlet *ngIf="action==='add'"></router-outlet>
+      <!-- this employee is an output directive on Detail component and bound to selectedEmployee -->
+      <app-employee-detail [employee]="selectedEmployee" *ngIf="action === 'detail'"></app-employee-detail>
+      <app-employee-edit [employee]="selectedEmployee" *ngIf="action === 'edit'"></app-employee-edit>
     </div>
     <div class="col col-3">
       <div class="crud-menu">
-        <button id="Add" class="btn btn-primary" routerLink="employee/add">Add</button>
+        <button id="Add" class="btn btn-primary" routerLink="employee/add" (click)="onAdd()">Add</button>
       </div>
-      <h3>List Of Employees</h3>
+      <h4>List Of Employees</h4>
       <ul>
         <li *ngFor="let emp of employees">
-          <span>{{emp.name}}</span>
-          <a [routerLink]="['employee', emp.id]">Detail</a>
-          <a [routerLink]="['employee/edit', emp.id]">Edit</a>
+          <span>{{emp.name}}</span> -
+          <!-- TODO: Need to invastigate; Not Able to load employee when used with routerLink;  -->
+          <!-- <a [routerLink]="['employee', emp.id]">Detail</a>
+          <a [routerLink]="['employee/edit', emp.id]">Edit</a> -->
+          <a href="#" (click)="onDetail($event, emp)">Detail</a> -
+          <a href="#" (click)="onEdit($event, emp)">Edit</a>
         </li>
       </ul>
     </div>
-  </div>  
+  </div>
 </div>
-

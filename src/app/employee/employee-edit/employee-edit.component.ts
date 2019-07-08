@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../employee.service';
@@ -11,6 +11,7 @@ import { Employee } from '../Models/Employee';
 })
 export class EmployeeEditComponent implements OnInit {
 
+  @Input()
   employee: Employee;
 
   constructor(
@@ -18,13 +19,11 @@ export class EmployeeEditComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-  
   }
 
-  ngDoCheck() {
-    const id: number = this.route.snapshot.paramMap.get('id') as unknown as number;
-    this.service.getEmployee(id).subscribe(e => this.employee = e);
-    console.log(this.employee);
+  async ngDoCheck() {
+    //const id: number = this.route.snapshot.paramMap.get('id') as unknown as number;
+    //await this.service.getEmployee(id).subscribe(e => this.employee = e);
   }
 
   onSubmit(form: NgForm): void {

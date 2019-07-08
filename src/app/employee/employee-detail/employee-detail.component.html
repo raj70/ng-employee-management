@@ -1,3 +1,60 @@
-<div *ngIf="employee">
-    {{ employee.name }}
-</div>
+<h3>Detail Employee: {{ employee.name }}</h3>
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="email">Email</label>
+            <input disabled type="email" class="form-control" id="email" placeholder="Email"
+                [(ngModel)]="employee.email" name="employee.email" #validEmail="ngModel" required
+                pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="title">Title</label>
+            <select disabled id="inputState" class="form-control" required pattern="^((?!Choose...).)*$"
+                name="employee.title" [(ngModel)]="employee.title" #validTitle="ngModel">
+                <option selected>Choose...</option>
+                <option>Mr</option>
+                <option>Mrs</option>
+                <option>Mx</option>
+                <option>Miss</option>
+                <option>Dr</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="name">Name</label>
+            <input disabled type="text" class="form-control" id="name" placeholder="Name" name="employee.name"
+                [(ngModel)]="employee.name" #validName="ngModel" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="middleName">Middle Name</label>
+            <input disabled type="text" class="form-control" id="middleName" name="employee.middleName"
+                [(ngModel)]="employee.middleName" placeholder="Middle Name">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="lastName">Last Name</label>
+            <input disabled type="text" class="form-control" id="lastName" placeholder="Last Name"
+                name="employee.lastName" [(ngModel)]="employee.lastName" #validLastName="ngModel" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="phone">Phone</label>
+            <input disabled type="text" class="form-control" id="phone" name="employee.phone"
+                [(ngModel)]="employee.phone" #validPhone="ngModel">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="mobile">Mobile</label>
+            <input disabled type="text" class="form-control" id="mobile" name="employee.mobilePhone"
+                [(ngModel)]="employee.mobilePhone" #validMobilePhone="ngModel">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="dob">Dob</label>
+        <input disabled type="date" class="form-control" id="dob" name="employee.dob" [(ngModel)]="employee.dob"
+            data-date="" data-date-format="DD/MM/YYYY" value="1992-01-28">
+    </div>
+</form>

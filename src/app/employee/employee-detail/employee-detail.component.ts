@@ -13,21 +13,24 @@ export class EmployeeDetailComponent implements OnInit {
   @Input()
   employee: Employee;
 
-  constructor(private empolyeeService: EmployeeService, private route: ActivatedRoute) {
+  constructor(
+    private empolyeeService: EmployeeService,
+    private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-  
+
   }
 
   ngDoCheck() {
-    const id: number = this.route.snapshot.paramMap.get('id') as unknown as number;
-    this.empolyeeService.getEmployee(id).subscribe(e => this.employee = e);
+    // TODO: why this is not working?
+    // const id: number = this.route.snapshot.paramMap.get('id') as unknown as number;
+    // this.empolyeeService.getEmployee(id).subscribe(e => this.employee = e);
   }
 
   ngOnChanges() {
 
-    console.log('ngOnChanges');
+    // console.log('ngOnChanges');
   }
 }

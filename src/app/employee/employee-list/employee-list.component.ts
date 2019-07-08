@@ -9,13 +9,33 @@ import { Employee } from '../Models/Employee';
 })
 export class EmployeeListComponent implements OnInit {
 
+  selectedEmployee: Employee;
+  action: string;
   employees: Employee[] = [];
 
   constructor(private service: EmployeeService) { }
 
-  ngOnInit() {
-    this.service.getEmployees().subscribe(employees => this.employees = employees);
-
+  async ngOnInit() {
+    await this.service.getEmployees().subscribe(employees => this.employees = employees);
   }
 
+  onSelect(emp: Employee): void {
+    this.selectedEmployee = emp;
+  }
+
+  onDetail(event: Event, emp: Employee): void {
+    event.preventDefault();
+    this.action = 'detail';
+    this.selectedEmployee = emp;
+  }
+
+  onEdit(event: Event, emp: Employee): void {
+    event.preventDefault();
+    this.action = 'edit';
+    this.selectedEmployee = emp;
+  }
+
+  onAdd(): void {
+    this.action = 'add';
+  }
 }
