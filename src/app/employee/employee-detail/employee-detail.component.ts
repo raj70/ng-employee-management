@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Employee } from '../Models/Employee';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../employee.service';
@@ -10,6 +10,7 @@ import { EmployeeService } from '../employee.service';
 })
 export class EmployeeDetailComponent implements OnInit {
 
+  @Input()
   employee: Employee;
 
   constructor(private empolyeeService: EmployeeService, private route: ActivatedRoute) {
@@ -17,9 +18,16 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    const id: number = this.route.snapshot.paramMap.get('id') as unknown as number;
-    this.empolyeeService.getEmployee(id).subscribe(e => this.employee = e);
-    console.log(this.employee, id);
+  
   }
 
+  ngDoCheck() {
+    const id: number = this.route.snapshot.paramMap.get('id') as unknown as number;
+    this.empolyeeService.getEmployee(id).subscribe(e => this.employee = e);
+  }
+
+  ngOnChanges() {
+
+    console.log('ngOnChanges');
+  }
 }

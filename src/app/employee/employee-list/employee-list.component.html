@@ -1,11 +1,21 @@
-<div class="container">
-  <h1>List Of Employee</h1>
-  <ul>
-    <li *ngFor="let emp of employees">
-      <span>{{emp.id}} - {{emp.name}}</span>
-      <a [routerLink]="['employee', emp.id]">Detail</a>
-    </li>
-  </ul>
+<div class="container container_list">
+  <div class="row">
+    <div class="col col-9">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col col-3">
+      <div class="crud-menu">
+        <button id="Add" class="btn btn-primary" routerLink="employee/add">Add</button>
+      </div>
+      <h3>List Of Employees</h3>
+      <ul>
+        <li *ngFor="let emp of employees">
+          <span>{{emp.name}}</span>
+          <a [routerLink]="['employee', emp.id]">Detail</a>
+          <a [routerLink]="['employee/edit', emp.id]">Edit</a>
+        </li>
+      </ul>
+    </div>
+  </div>  
 </div>
 
-<router-outlet></router-outlet>

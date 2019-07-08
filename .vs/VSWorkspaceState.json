@@ -5,8 +5,9 @@
     "\\src\\app",
     "\\src\\app\\auth",
     "\\src\\app\\auth\\login",
-    "\\src\\environments"
+    "\\src\\app\\employee",
+    "\\src\\app\\employee\\employee-add"
   ],
-  "SelectedNode": "\\src\\app\\auth\\login\\login.component.ts",
+  "SelectedNode": "\\src\\app\\employee\\employee-add\\employee-add.component.ts",
   "PreviewInSolutionExplorer": false
 }
