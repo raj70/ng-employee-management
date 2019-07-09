@@ -14,6 +14,7 @@ export class AuthNavComponent implements OnInit {
 
   constructor(private authService: AuthService) {
     this.username = this.authService.username;
+    this.authService.setUsername();
   }
 
   ngOnInit() {

@@ -41,3 +41,17 @@ Import and Add FormModule (check in auth.module.ts)
 Add [(ngModel)] : example ([(ngModel)]="username" name="username"). (check in login.component.html)
 
 https://angular.io/guide/template-syntax#ngmodel-two-way-binding
+
+
+## this application requried https://github.com/raj70/api-employee
+
+The "api-employee" required Mongodb. 
+Install Mongodb.
+run mongodb
+
+And run : npm run apps (for api-employees)
+
+The Api-Employee consists of two API services.
+1) Auth Service
+2) Employee Service
+

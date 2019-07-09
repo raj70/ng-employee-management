@@ -40,9 +40,9 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     /* ng http : to talk to outside api: https://angular.io/tutorial/toh-pt6 */
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // )
   ],
   providers: [],
   bootstrap: [AppComponent]

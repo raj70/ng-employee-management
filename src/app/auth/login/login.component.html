@@ -1,4 +1,14 @@
 <div class="container">
+  <div class="response-message">
+    <div class="alert alert-danger" *ngIf="message.isError">
+      <p>{{ message.message}}</p>
+      <p> Status Code: {{message.statusCode}} </p>
+    </div>
+
+    <div class="alert alert-info" *ngIf="!message.isError && message.statusCode>0">
+      <p>{{ message.message}}</p>
+    </div>
+  </div>
   <!-- <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)"> -->
   <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
     <!--Note: for passing value from view to datasource: https://angular.io/guide/template-syntax#binding-syntax-an-overview
@@ -7,8 +17,8 @@
     <div class="form-group">
       <label for="email">Email address</label>
       <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
-             (focusout)="onfocusOut($event)" [(ngModel)]="username" name="username"
-             #validEmail="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+        [(ngModel)]="username" name="username" #validEmail="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        required>
 
       <!-- Note: #validPassword on input element is for the validation:
           https://angular.io/guide/form-validation#template-driven-validation
@@ -30,9 +40,9 @@
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Password" (focusout)="onfocusOut($event)"
-             [(ngModel)]="password" name="password" #validPassword="ngModel" minlength="8"
-             pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+      <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password"
+        name="password" #validPassword="ngModel" minlength="8"
+        pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
 
       <div *ngIf="validPassword.invalid && (validPassword.dirty || validPassword.touched)" class="alert alert-danger">
         <div *ngIf="validPassword.errors.required">
@@ -55,5 +65,8 @@
     </div>
     <button class="btn btn-primary" type="submit">Sign In</button>
   </form>
+
+
+
 
 </div>
