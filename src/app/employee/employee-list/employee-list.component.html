@@ -1,6 +1,12 @@
 <div class="container container_list">
   <div class="row">
     <div class="col col-9">
+
+      <div class="alert alert-danger" *ngIf="isError">
+        <div class="error">
+          <span>{{ errorMessage }}</span>
+        </div>
+      </div>
       <router-outlet *ngIf="action==='add'"></router-outlet>
       <!-- this employee is an output directive on Detail component and bound to selectedEmployee -->
       <app-employee-detail [employee]="selectedEmployee" *ngIf="action === 'detail'"></app-employee-detail>
@@ -23,4 +29,6 @@
       </ul>
     </div>
   </div>
+
+
 </div>

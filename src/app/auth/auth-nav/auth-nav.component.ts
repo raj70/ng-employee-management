@@ -13,8 +13,8 @@ export class AuthNavComponent implements OnInit {
   username: string;
 
   constructor(private authService: AuthService) {
-    this.username = this.authService.username;
     this.authService.setUsername();
+    this.username = this.authService.username;
   }
 
   ngOnInit() {

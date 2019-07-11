@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
       this.message = await this.authService.login(email, password);
 
-      if (this.message.isError === false) {
+      if (!this.message.isError) {
         this.authService.record(this.message);
         this.authService.username = email;
       } else {

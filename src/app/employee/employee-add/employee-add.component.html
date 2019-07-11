@@ -6,37 +6,40 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" placeholder="Email"
-             [(ngModel)]="email" name="email" #validEmail="ngModel"
-             required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+      <input type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="email" name="email"
+        #validEmail="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 
-      <div class="alert alert-danger" role="alert" *ngIf="validEmail.invalid && (validEmail.dirty || validEmail.touched)">
+      <div class="alert alert-danger" role="alert"
+        *ngIf="validEmail.invalid && (validEmail.dirty || validEmail.touched)">
         <div *ngIf="validEmail.errors.required">Email is required</div>
         <div *ngIf="validEmail.errors.pattern">Not a valid email</div>
       </div>
-   </div>
-    
+    </div>
+
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="title">Title</label>
-      <select id="inputState" class="form-control" required pattern="^((?!Choose...).)*$"
-              name="title" [(ngModel)]="title" #validTitle="ngModel">
+      <select id="inputState" class="form-control" required pattern="^((?!Choose...).)*$" name="title"
+        [(ngModel)]="title" #validTitle="ngModel">
         <option selected>Choose...</option>
         <option>Mr</option>
         <option>Mrs</option>
         <option>Mx</option>
         <option>Miss</option>
+        <option>Ms</option>
+        <option>Dr</option>
+        <option>Master</option>
       </select>
-      <div class="alert alert-danger" *ngIf="validTitle.invalid && (validTitle.dirty || validTitle.touched) && title=='Choose...'">
+      <div class="alert alert-danger"
+        *ngIf="validTitle.invalid && (validTitle.dirty || validTitle.touched) && title=='Choose...'">
         <div *ngIf="validTitle.errors.pattern">Title is required</div>
       </div>
     </div>
     <div class="form-group col-md-6">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Name"
-             name="name" [(ngModel)]="name" #validName="ngModel"
-             required>
+      <input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="name"
+        #validName="ngModel" required>
       <div class="alert alert-danger" role="alert" *ngIf="validName.invalid && (validName.dirty || validName.touched)">
         <div *ngIf="validName.errors.required">Name is required</div>
       </div>
@@ -49,10 +52,10 @@
     </div>
     <div class="form-group col-md-6">
       <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" id="lastName" placeholder="Last Name"
-             name="lastname" [(ngModel)]="lastname" #validLastName="ngModel"
-             required>
-      <div class="alert alert-danger" role="alert" *ngIf="validLastName.invalid && (validLastName.dirty || validLastName.touched)">
+      <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastname"
+        [(ngModel)]="lastname" #validLastName="ngModel" required>
+      <div class="alert alert-danger" role="alert"
+        *ngIf="validLastName.invalid && (validLastName.dirty || validLastName.touched)">
         <div *ngIf="validLastName.errors.required">Last Name is required</div>
       </div>
     </div>
@@ -60,26 +63,25 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="phone">Phone</label>
-      <input type="text" class="form-control" id="phone"
-             name="phone" [(ngModel)]="phone" #validPhone="ngModel">
+      <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="phone" #validPhone="ngModel">
     </div>
     <div class="form-group col-md-6">
       <label for="mobile">Mobile</label>
-      <input type="text" class="form-control" id="mobile"
-             name="mobilePhone" [(ngModel)]="mobilePhone" #validMobilePhone="ngModel">
+      <input type="text" class="form-control" id="mobile" name="mobilePhone" [(ngModel)]="mobilePhone"
+        #validMobilePhone="ngModel">
     </div>
     <div class="form-group col-md-12">
       <div class="alert alert-danger" role="alert"
-           *ngIf="((validPhone.dirty || validPhone.touched) && phone==='' && mobilePhone==='') || ((validMobilePhone.dirty || validMobilePhone.touched) && mobilePhone==='' && phone==='')">
+        *ngIf="((validPhone.dirty || validPhone.touched) && phone==='' && mobilePhone==='') || ((validMobilePhone.dirty || validMobilePhone.touched) && mobilePhone==='' && phone==='')">
         <div>Phone or Mobile Phone is requred (8 to 10 digits)</div>
       </div>
-    </div> 
-  </div>
-    <div class="form-group">
-      <label for="dob">Dob</label>
-      <input type="date" class="form-control" id="dob" data-date="" data-date-format="DD/MM/YYYY" value="1992-01-28">
     </div>
-    <button type="submit" class="btn btn-primary">Add</button>
+  </div>
+  <div class="form-group">
+    <label for="dob">Dob</label>
+    <input type="date" class="form-control" id="dob" data-date="" data-date-format="DD/MM/YYYY" value="1992-01-28">
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
 </form>
 
 <div *ngIf="hasError">
