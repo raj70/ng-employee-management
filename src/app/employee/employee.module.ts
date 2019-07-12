@@ -8,6 +8,8 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
+import { AuthModule } from '../auth/auth.module';
+import { AuthGuardService } from '../auth/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -19,9 +21,10 @@ import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
   imports: [
     CommonModule,
     FormsModule,
+    AuthModule,
     EmployeeRoutingModule
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, AuthGuardService],
   entryComponents: [EmployeeListComponent]
 })
 export class EmployeeModule { }

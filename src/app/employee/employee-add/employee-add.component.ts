@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Employee } from '../Models/Employee';
+import { EmployeeService } from '../employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-add',
@@ -15,7 +18,7 @@ export class EmployeeAddComponent implements OnInit {
 
   hasError: boolean;
 
-  constructor() {
+  constructor(private service: EmployeeService, private router: Router) {
     /* initialed for validation */
     this.phone = '';
     this.mobilePhone = '';
@@ -29,8 +32,8 @@ export class EmployeeAddComponent implements OnInit {
 
     this.hasError = false;
 
-    const phone = form.controls["phone"].value;
-    const mobilePhone = form.controls["mobilePhone"].value;
+    const phone = form.controls.phone.value;
+    const mobilePhone = form.controls.mobilePhone.value;
 
     /* since we don't have html validation for phone and mobile-phone */
     if (phone === '' && mobilePhone === '') {
@@ -44,14 +47,32 @@ export class EmployeeAddComponent implements OnInit {
     }
 
 
-    if (this.hasError) {
-      console.log("hasError", this.hasError);
+    if (!this.hasError) {
+      const emploee = new Employee();
+      emploee.name = form.controls.name.value;
+      emploee.dob = form.controls.dob.value;
+      emploee.email = form.controls.email.value;
+      emploee.lastName = form.controls.lastName.value;
+      emploee.middleName = form.controls.middleName.value;
+      emploee.mobilePhone = form.controls.mobilePhone.value;
+      emploee.phone = form.controls.phone.value;
+      emploee.title = form.controls.title.value;
+
+      this.service.add(emploee)
+        .subscribe(o => {
+          this.router.navigate(['employees']);
+
+          // TODO: show message
+          // TODO: refresh list
+          console.log(o.body.message);
+        },
+          (error) => console.log(error),
+          () => console.log('completed'));
     }
   }
 
   /**
    * this method should called after check on empty string
-   * @param phone
    */
   private isValidNumber(phone: string): boolean {
     if (phone === '') {

@@ -1,6 +1,6 @@
 import { Injectable, Output } from '@angular/core';
 import { Message } from './models/message';
-import { AbstractHttpService } from 'src/Utils/AbstractHttpService';
+import { AbstractHttpService } from 'src/app/Utils/AbstractHttpService';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

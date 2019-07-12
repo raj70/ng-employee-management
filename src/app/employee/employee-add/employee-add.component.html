@@ -48,12 +48,13 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="middleName">Middle Name</label>
-      <input type="text" class="form-control" id="middleName" placeholder="Middle Name">
+      <input type="text" class="form-control" id="middleName" placeholder="Middle Name" name="middleName"
+        [(ngModel)]="middleName">
     </div>
     <div class="form-group col-md-6">
       <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastname"
-        [(ngModel)]="lastname" #validLastName="ngModel" required>
+      <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName"
+        [(ngModel)]="lastName" #validLastName="ngModel" required>
       <div class="alert alert-danger" role="alert"
         *ngIf="validLastName.invalid && (validLastName.dirty || validLastName.touched)">
         <div *ngIf="validLastName.errors.required">Last Name is required</div>
@@ -79,7 +80,8 @@
   </div>
   <div class="form-group">
     <label for="dob">Dob</label>
-    <input type="date" class="form-control" id="dob" data-date="" data-date-format="DD/MM/YYYY" value="1992-01-28">
+    <input type="date" class="form-control" id="dob" name="dob" [(ngModel)]="dob" data-date=""
+      data-date-format="DD/MM/YYYY" value="1992-01-28">
   </div>
   <button type="submit" class="btn btn-primary">Add</button>
 </form>

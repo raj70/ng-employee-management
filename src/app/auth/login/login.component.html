@@ -25,7 +25,6 @@
           #validPassword: exporting ngModel to local variable validPassword
           Note: pattern, required attribute are from HTML 5; for more:
           https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
-
     -->
 
       <div *ngIf="validEmail.invalid && (validEmail.dirty || validEmail.touched)" class="alert alert-danger">
@@ -59,14 +58,6 @@
         </div>
       </div>
     </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Remember me</label>
-    </div>
     <button class="btn btn-primary" type="submit">Sign In</button>
   </form>
-
-
-
-
 </div>

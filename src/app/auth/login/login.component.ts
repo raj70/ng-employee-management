@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
 import { Message } from '../models/message';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +17,20 @@ export class LoginComponent implements OnInit {
 
   message: Message;
 
-  constructor(private authService: AuthService) {
+  private returnUrl: string;
+
+  constructor(
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.username = '';
     this.password = '';
     this.message = new Message();
   }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
   async onSubmit(form: NgForm) {
@@ -35,6 +43,7 @@ export class LoginComponent implements OnInit {
       if (!this.message.isError) {
         this.authService.record(this.message);
         this.authService.username = email;
+        this.router.navigateByUrl(this.returnUrl);
       } else {
         this.authService.username = '';
       }
