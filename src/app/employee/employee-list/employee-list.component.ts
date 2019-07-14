@@ -30,7 +30,8 @@ export class EmployeeListComponent implements OnInit {
         },
         (error) => {
           this.isError = true;
-          this.errorMessage = error.error.message;
+          this.errorMessage = error.error.message.message;
+          console.log(error.error.message.message);
           if (this.isError) {
             this.hideError();
           }
