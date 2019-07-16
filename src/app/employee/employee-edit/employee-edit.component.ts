@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../Models/Employee';
+import { Role } from '../Models/Role';
 
 @Component({
   selector: 'app-employee-edit',
@@ -13,17 +14,21 @@ export class EmployeeEditComponent implements OnInit {
 
   @Input()
   employee: Employee;
+  @Input()
+  roles: Role[];
 
   constructor(
     private service: EmployeeService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
   }
 
   async ngDoCheck() {
-    //const id: number = this.route.snapshot.paramMap.get('id') as unknown as number;
-    //await this.service.getEmployee(id).subscribe(e => this.employee = e);
+    // const id: number = this.route.snapshot.paramMap.get('id') as unknown as number;
+    // await this.service.getEmployee(id).subscribe(e => this.employee = e);
   }
 
   onSubmit(form: NgForm): void {

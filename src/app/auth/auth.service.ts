@@ -1,5 +1,5 @@
 import { Injectable, Output } from '@angular/core';
-import { Message } from './models/message';
+import { Message } from './models/Message';
 import { AbstractHttpService } from 'src/app/Utils/AbstractHttpService';
 import { HttpClient } from '@angular/common/http';
 

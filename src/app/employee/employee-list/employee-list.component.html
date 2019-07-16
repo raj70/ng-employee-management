@@ -9,8 +9,9 @@
       </div>
       <router-outlet *ngIf="action==='add'"></router-outlet>
       <!-- this employee is an output directive on Detail component and bound to selectedEmployee -->
-      <app-employee-detail [employee]="selectedEmployee" *ngIf="action === 'detail'"></app-employee-detail>
-      <app-employee-edit [employee]="selectedEmployee" *ngIf="action === 'edit'"></app-employee-edit>
+      <app-employee-detail [employee]="selectedEmployee" [roles]="roles" *ngIf="action === 'detail'">
+      </app-employee-detail>
+      <app-employee-edit [employee]="selectedEmployee" [roles]="roles" *ngIf="action === 'edit'"></app-employee-edit>
     </div>
     <div class="col col-3">
       <div class="crud-menu">

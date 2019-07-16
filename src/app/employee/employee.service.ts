@@ -3,19 +3,23 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employee } from './Models/Employee';
 import { AbstractHttpService } from 'src/app/Utils/AbstractHttpService';
-import { Message } from './Models/Message';
+import { Message, RoleResponse } from './Models/Message';
+import { Role } from './Models/Role';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService extends AbstractHttpService {
 
+  private roles: Role[];
+
   constructor(protected http: HttpClient) {
     super(http);
+    this.roles = [];
+    this.setRoles();
   }
 
   getEmployees(): Observable<HttpResponse<Message>> {
-    console.log('getEmployees');
     return this.http.get<Message>('api/employees',
       {
         headers: this.LoginTokenOnHeader(),
@@ -38,5 +42,24 @@ export class EmployeeService extends AbstractHttpService {
       observe: 'response',
       responseType: 'json'
     });
+  }
+
+  /**
+   *  sets roles form API
+   */
+  setRoles(): void {
+    this.http.get<RoleResponse>('api/Auth/Roles', {
+      headers: this.LoginTokenOnHeader()
+    }).subscribe((response) => {
+      this.roles = (response.message as unknown as RoleResponse).data;
+    }
+      , (error) => {
+        console.log('error-setRoles', error);
+      }
+      , () => { console.log('completed'); });
+  }
+
+  getRoles(): Role[] {
+    return this.roles;
   }
 }

@@ -8,4 +8,5 @@ export class Employee {
   phone: number;
   mobilePhone: number;
   dob: Date;
+  roleId: string;
 }

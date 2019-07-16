@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
-import { Message } from '../models/message';
+import { Message } from '../models/Message';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

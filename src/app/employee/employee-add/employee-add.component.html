@@ -83,6 +83,18 @@
     <input type="date" class="form-control" id="dob" name="dob" [(ngModel)]="dob" data-date=""
       data-date-format="DD/MM/YYYY" value="1992-01-28">
   </div>
+  <div class="form-group">
+    <label for="title">Role</label>
+    <select id="inputRole" class="form-control" required pattern="^((?!Choose...).)*$" name="roleId"
+      [(ngModel)]="roleId" #validRoleId="ngModel">
+      <option value="" selected>Choose...</option>
+      <option *ngFor='let role of roles' value="{{role.roleId}}">{{role.name}}</option>
+    </select>
+    <div class="alert alert-danger"
+      *ngIf="validRoleId.invalid && (validRoleId.dirty || validRoleId.touched) && roleId=='Choose...'">
+      <div *ngIf="validRoleId.errors.pattern">Role is required</div>
+    </div>
+  </div>
   <button type="submit" class="btn btn-primary">Add</button>
 </form>
 

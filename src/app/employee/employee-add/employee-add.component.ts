@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Employee } from '../Models/Employee';
 import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
+import { Role } from '../Models/Role';
 
 @Component({
   selector: 'app-employee-add',
@@ -10,6 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./employee-add.component.scss']
 })
 export class EmployeeAddComponent implements OnInit {
+
+  @Input()
+  roles: Role[];
 
   title: string;
   email: string;
@@ -26,6 +30,7 @@ export class EmployeeAddComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.roles = this.service.getRoles();
   }
 
   onSubmit(form: NgForm): void {
@@ -57,7 +62,9 @@ export class EmployeeAddComponent implements OnInit {
       emploee.mobilePhone = form.controls.mobilePhone.value;
       emploee.phone = form.controls.phone.value;
       emploee.title = form.controls.title.value;
+      emploee.roleId = form.controls.roleId.value;
 
+      console.log(emploee);
       this.service.add(emploee)
         .subscribe(o => {
           this.router.navigate(['employees']);

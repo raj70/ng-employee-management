@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../Models/Employee';
 import { Message } from '../Models/Message';
+import { Role } from '../Models/Role';
 
 @Component({
   selector: 'app-employee-list',
@@ -11,6 +12,7 @@ import { Message } from '../Models/Message';
 export class EmployeeListComponent implements OnInit {
 
   selectedEmployee: Employee;
+  roles: Role[];
   /* is used to hides divs */
   action: string;
   employees: Employee[] = [];
@@ -38,6 +40,7 @@ export class EmployeeListComponent implements OnInit {
         }, () => {
           // console.log('completed');
         });
+    this.roles = this.service.getRoles();
   }
 
   onSelect(emp: Employee): void {
