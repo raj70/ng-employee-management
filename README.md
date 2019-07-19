@@ -55,3 +55,6 @@ The Api-Employee consists of two API services.
 1) Auth Service
 2) Employee Service
 
+## SSH key is added to repository
+
+Follow instructions from : https://help.github.com/en/articles/connecting-to-github-with-ssh
